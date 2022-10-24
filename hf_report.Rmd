@@ -1,0 +1,67 @@
+---
+title: "Assignment: Final Project Organization and GitHub Repository"
+author: "Chang Liu"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Notes
+
+Data downloaded from https://www.kaggle.com/datasets/andrewmvd/heart-failure-clinical-data.
+Due to the requirement of login using username and password, the data set was downloaded manually instead of using URL.
+
+Data set from Davide Chicco, Giuseppe Jurman: Machine learning can predict survival of patients with heart failure from serum creatinine and ejection fraction alone. BMC Medical Informatics and Decision Making 20, 16 (2020)
+
+## Introduction
+
+Heart failure (HF) is a chronic, progressive condition in which the heart muscle is unable to pump enough blood to meet the body’s needs for blood and oxygen. HF affects an estimated total of 6.2 million HF patients in the US [Virani et al. 2020], and costs over $31 billion in healthcare in 2020 [Heidenreich et al. 2013]. The burden of HF in the US has been increasing continuously, with projected over 8 million total prevalence and 53 billion dollars in healthcare in the year of 2030 [Heidenreich et al. 2013]. HF is associated with high morbidity and mortality. Based on the Framingham Heart Study [Levy et al. 2002], the mortality rate after diagnosis of HF was 10% after 30 days, 20-30% after 1 year, and 45-60% after 5 years. The high public health burden of HF highlights the importance of research on prevention, effective treatment and improvement in HF survival, which can be inferred by a better understanding of the prediction performance of risk factors that contribute to HF survival.
+
+This analysis was performed among 299 HF patients with medical records data enrolled at the Faisalabad Institute of Cardiology and at the Allied Hospital in Faisalabad (Punjab, Pakistan), from April to December in 2015 [Kleinbaum et al. 2012; Ahmad et al. 2019]. The original study containing the dataset analyzed in this manuscript was approved by the Institutional Review Board of Government College University (Faisalabad, Pakistan).
+
+## Descriptive Data of the Overall Cohort
+
+The charateristics of the overall cohort is shown in **Table 1A** below. The total sample size of 299 partiipants had a median follow-up of 115 (interquartile range [IQR] 73, 203) days, and 96 (32%) participants had death event during the follow-up. This cohort consisted of 194 (65%) men, with a median age of 60 (IQR 51, 70) years, 96 (32%) were current smokers, 125 (42%) were diabetic, 105 (35%) were hypertensive, 129 (43%) had aneamia. The median left ventricular ejection fraction was 38 (IQR 30, 45) percent, the median blood sodium was 137 (IQR 134, 140) mEq/L, the median blood platelets was 262,000 (IQR 212,500, 303,500) n/mL, the median creatinine phosphokinase was 250 (IQR 116, 582) mcg/L, the serum creatinine was 1.10 (0.90, 1.40) mg/dL.
+
+```{r, directory, echo = FALSE, include=FALSE}
+rm(list=ls())
+library(labelled)
+library(gtsummary)
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+here::i_am("hf_report.RMD")
+```
+
+```{r, read_data, echo = FALSE}
+data<-readRDS(here::here("output/labeled_data.rds"))
+```
+
+```{r, summary1, echo = FALSE, message = FALSE}
+table1a<-readRDS(here::here("output/table1a.rds"))
+table1a
+```
+
+## Descriptive Data Stratified by Death Events
+
+The difference in risk factor profile between the participants who had death events and participants who did not uis shown in **Table 1B** below. Participants who died were older (65 vs. 60 years, p<0.001), lower in left ventricular efection fraction (30 vs. 38%, p<0.001), lower in blood sodium (136 vs. 137 mEq/L, p<0.001), and higher in serum creatinine (1.30 vs. 1.00 mg/dL, p<0.001).
+
+```{r, summary2, echo = FALSE, message = FALSE}
+table1b<-readRDS(here::here("output/table1b.rds"))
+table1b
+```
+
+## Histograms for Risk Factor Distribution
+
+For the risk factors that were significantly different between the participants who had death events and participants who did not, the difference in distributions are shown in **Figures 1A-D** below. Participants who had death events had a distribution shifted to the right for patient age and creatinine, to the left for ejection fraction and sodium.
+
+```{r, figure, echo = FALSE, message = FALSE}
+figure1a<-readRDS(here::here("output/figure1a.rds"))
+figure1b<-readRDS(here::here("output/figure1b.rds"))
+figure1c<-readRDS(here::here("output/figure1c.rds"))
+figure1d<-readRDS(here::here("output/figure1d.rds"))
+
+figure1a
+figure1b
+figure1c
+figure1d
+```
