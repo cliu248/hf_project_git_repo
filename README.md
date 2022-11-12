@@ -34,4 +34,7 @@
 
 Run the Makefile by typing make inside the repo directory. Executing make clean will remove the report and the .rds files in the `output/` folder.
 
+##How to synchronize package repository
+
+Executing make install will restore the package environment and synchronize package repository.
 

@@ -13,3 +13,7 @@ figures:
 .PHONY: clean
 clean:
 	rm -f output/*.rds && rm -f hf_report.html
+
+.PHONY: install
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
