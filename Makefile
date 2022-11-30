@@ -1,4 +1,5 @@
-report.html: hf_report.Rmd code/04_render_report.R labeled_data tables figures
+#Run in container
+hf_report.html: hf_report.Rmd code/04_render_report.R labeled_data tables figures
 	Rscript code/04_render_report.R
 
 labeled_data:
@@ -17,3 +18,7 @@ clean:
 .PHONY: install
 install:
 	Rscript -e "renv::restore(prompt = FALSE)"
+	
+#Run in local machine
+report/hf_report.html: 
+	docker run -v "/$(pwd)/report":/hf_project_git_repo/report cliu248/hf_image

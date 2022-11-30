@@ -29,7 +29,7 @@ library(gtsummary)
 library(knitr)
 library(kableExtra)
 library(ggplot2)
-here::i_am("hf_report.RMD")
+here::i_am("hf_report.Rmd")
 ```
 
 ```{r, read_data, echo = FALSE}
