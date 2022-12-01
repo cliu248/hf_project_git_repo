@@ -32,7 +32,7 @@
   
 ##How to Build Docker Image
 
-Use `docker build -t hf_image` to build the docker image locally. Execute `docker run hf_image bash` will run the container. 
+Use `docker build -t hf_image .` to build the docker image locally. 
 
 ##How to Generate Report
 
