@@ -21,4 +21,4 @@ install:
 	
 #Run in local machine
 report/hf_report.html: 
-	docker run -v "/$(pwd)/report":/hf_project_git_repo/report cliu248/hf_image
+	docker run -v "/$$(pwd)/report":/hf_project_git_repo/report cliu248/hf_image
